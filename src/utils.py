@@ -1,6 +1,6 @@
 import json
 
-from main import Category, Product
+from models import Category, Product
 
 
 def load_categories_from_json(path_str: str) -> list[Category]:
