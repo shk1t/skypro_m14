@@ -1,4 +1,5 @@
 import pytest
+
 from src.main import Category, Product
 
 
@@ -40,5 +41,6 @@ def test_category_attributes(sample_category, sample_products):
     p3 = Product("Клавиатура", "Механическая", 5000, 10)
     cat2 = Category("Переферия", "Комплектующие", [p3])
 
+    assert cat2.name == "Переферия"
     assert Category.category_count == 2
     assert Category.product_count == 3
