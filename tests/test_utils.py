@@ -7,7 +7,6 @@ from src.utils import load_categories_from_json
 
 
 def test_load_categories_from_json():
-    # Подготовка тестовых данных
     data = [
         {
             "name": "Фрукты",
@@ -18,12 +17,10 @@ def test_load_categories_from_json():
         }
     ]
 
-    # Временный json-файл
     tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json", mode="w", encoding="utf-8")
     json.dump(data, tmp_file, ensure_ascii=False)
     tmp_file.close()
 
-    # Проверка
     categories = load_categories_from_json(tmp_file.name)
 
     assert len(categories) == 1
@@ -37,5 +34,4 @@ def test_load_categories_from_json():
     assert prod.name == "Яблоко"
     assert prod.price == 50
 
-    # Чистим за собой
     os.remove(tmp_file.name)
