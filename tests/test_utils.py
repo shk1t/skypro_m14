@@ -11,9 +11,7 @@ def test_load_categories_from_json():
         {
             "name": "Фрукты",
             "description": "Свежие фрукты",
-            "products": [
-                {"name": "Яблоко", "description": "Зелёное", "price": 50, "quantity": 10}
-            ],
+            "products": [{"name": "Яблоко", "description": "Зелёное", "price": 50, "quantity": 10}],
         }
     ]
 
