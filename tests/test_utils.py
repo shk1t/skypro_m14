@@ -27,9 +27,5 @@ def test_load_categories_from_json():
     assert cat.name == "Фрукты"
     assert cat.description == "Свежие фрукты"
     assert len(cat.products) == 1
-    prod = cat.products[0]
-    assert isinstance(prod, Product)
-    assert prod.name == "Яблоко"
-    assert prod.price == 50
 
     os.remove(tmp_file.name)

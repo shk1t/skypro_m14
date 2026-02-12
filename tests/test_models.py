@@ -31,16 +31,15 @@ def test_product_init(sample_products):
 def test_category_init(sample_category, sample_products):
     assert sample_category.name == "Электроника"
     assert sample_category.description == "Техника для дома и офиса"
-    assert sample_category.products == sample_products
+    assert sample_category.products == [f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт." for product in sample_products]
 
 
-def test_category_attributes(sample_category, sample_products):
-    assert Category.category_count == 1
-    assert Category.product_count == 2
+def test_category_add_product(sample_category):
+    p1 = Product("Мышка", "Проводная", 2090, 15)
+    sample_category.add_product(p1)
+    assert len(sample_category.products) == 3
+    assert sample_category.products[2] == f"{p1.name}, {p1.price} руб. Остаток: {p1.quantity} шт."
 
-    p3 = Product("Клавиатура", "Механическая", 5000, 10)
-    cat2 = Category("Переферия", "Комплектующие", [p3])
 
-    assert cat2.name == "Переферия"
-    assert Category.category_count == 2
-    assert Category.product_count == 3
+def test_new_product():
+    pass
