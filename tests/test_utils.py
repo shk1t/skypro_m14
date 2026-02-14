@@ -1,12 +1,13 @@
 import json
-import tempfile
 import os
+import tempfile
 
 from src.models import Category, Product
 from src.utils import load_categories_from_json
 
 
 def test_load_categories_from_json():
+    """Функция для загрузки категорий из json"""
     data = [
         {
             "name": "Фрукты",
