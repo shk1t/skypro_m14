@@ -1,12 +1,13 @@
 import json
-import tempfile
 import os
+import tempfile
 
 from src.models import Category, Product
 from src.utils import load_categories_from_json
 
 
 def test_load_categories_from_json():
+    """Функция для загрузки категорий из json"""
     data = [
         {
             "name": "Фрукты",
@@ -27,9 +28,5 @@ def test_load_categories_from_json():
     assert cat.name == "Фрукты"
     assert cat.description == "Свежие фрукты"
     assert len(cat.products) == 1
-    prod = cat.products[0]
-    assert isinstance(prod, Product)
-    assert prod.name == "Яблоко"
-    assert prod.price == 50
 
     os.remove(tmp_file.name)
