@@ -21,11 +21,12 @@ def sample_category(sample_products):
     return Category("Электроника", "Техника для дома и офиса", sample_products)
 
 
-def test_product_init(sample_products, capsys, monkeypatch):
+def test_product(sample_products, capsys, monkeypatch):
     assert sample_products[0].name == "Ноутбук"
     assert sample_products[0].description == "Игровой ноутбук"
     assert sample_products[0].price == f"{sample_products[0].name}. Цена: 80000"
-
+    assert str(sample_products[0]) == "Ноутбук, 80000 руб. Остаток: 5 шт."
+    assert sample_products[0] + sample_products[1] == 80000 * 5 + 2000 * 15
     sample_products[0].price = -1
     captured = capsys.readouterr()
     assert "Цена не должна быть нулевая или отрицательная" in captured.out
