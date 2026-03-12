@@ -1,4 +1,20 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __str__():
+        pass
+
+    @abstractmethod
+    def __add__():
+        pass
+
+
+class MixinPrint()
+
+class Product(BaseProduct):
     name: str
     description: str
     __price: float
