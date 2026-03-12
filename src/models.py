@@ -61,6 +61,10 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self):
+        """Метод для получения категории с кол-вом продуктов"""
+        return f"{self.name}, количество продуктов: {len(self.products)} шт."
+
     @property
     def products(self) -> list[str]:
         """Геттер для получения списка продуктов с их данными"""

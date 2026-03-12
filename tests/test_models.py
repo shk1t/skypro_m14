@@ -45,6 +45,7 @@ def test_product(sample_products, capsys, monkeypatch):
 def test_category_init(sample_category, sample_products):
     assert sample_category.name == "Электроника"
     assert sample_category.description == "Техника для дома и офиса"
+    assert str(sample_category) == "Электроника, количество продуктов: 2 шт."
     assert sample_category.products == [
         f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n" for product in sample_products
     ]
