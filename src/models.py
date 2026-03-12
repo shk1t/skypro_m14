@@ -10,6 +10,16 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        """Метод для получения строки с данными продукта"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: "Product") -> float:
+        """Функция для сложения цен двух продуктов"""
+        if isinstance(other, Product):
+            return self.__price * self.quantity + other.__price * other.quantity
+        raise TypeError("Операция сложения возможна только между объектами класса Product")
+
     @property
     def price(self) -> str:
         """Геттер для получения цены продукта"""
@@ -50,6 +60,10 @@ class Category:
         self.__products = products
         Category.category_count += 1
         Category.product_count += len(products)
+
+    def __str__(self):
+        """Метод для получения категории с кол-вом продуктов"""
+        return f"{self.name}, количество продуктов: {len(self.products)} шт."
 
     @property
     def products(self) -> list[str]:
