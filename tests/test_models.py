@@ -54,6 +54,9 @@ def test_category_init(sample_category, sample_products):
 def test_category_add_product(sample_category):
     p1 = Product("Мышка", "Проводная", 2090, 15)
     sample_category.add_product(p1)
+
+    with pytest.raises(TypeError):
+        sample_category.add_product("не продукт")
     assert len(sample_category.products) == 3
     assert sample_category.products[2] == f"{p1.name}, {p1.price} руб. Остаток: {p1.quantity} шт.\n"
 

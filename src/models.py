@@ -1,4 +1,20 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __str__():
+        pass
+
+    @abstractmethod
+    def __add__():
+        pass
+
+
+class MixinPrint()
+
+class Product(BaseProduct):
     name: str
     description: str
     __price: float
@@ -16,9 +32,9 @@ class Product:
 
     def __add__(self, other: "Product") -> float:
         """Функция для сложения цен двух продуктов"""
-        if isinstance(other, Product):
+        if type(self) is type(other):
             return self.__price * self.quantity + other.__price * other.quantity
-        raise TypeError("Операция сложения возможна только между объектами класса Product")
+        raise TypeError("Операция сложения возможна только между объектами одного класса")
 
     @property
     def price(self) -> str:
@@ -68,9 +84,30 @@ class Category:
     @property
     def products(self) -> list[str]:
         """Геттер для получения списка продуктов с их данными"""
-        return [f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n" for product in self.__products]
+        return [
+            f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n" for product in self.__products
+        ]
 
     def add_product(self, product: Product) -> None:
         """Функция для добавления продукта в категорию"""
+        if not isinstance(product, Product):
+            raise TypeError("В категорию можно добавлять продукты класса Product и его наследников")
         self.__products.append(product)
         Category.product_count += 1
+
+
+class Smartphone(Product):
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
